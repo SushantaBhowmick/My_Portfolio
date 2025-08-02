@@ -1,6 +1,6 @@
-# 🚀 Modern Full-Stack Portfolio
+# 🚀 Sushanta Bhowmick | Modern Full-Stack Portfolio
 
-A stunning, modern portfolio website built with Next.js 14, featuring cutting-edge technologies and beautiful UI components. This portfolio showcases full-stack development skills with interactive 3D effects, smooth animations, and a functional backend.
+A stunning, modern portfolio website showcasing Sushanta Bhowmick's full-stack development expertise. Built with Next.js 14, featuring cutting-edge technologies, interactive 3D effects, smooth animations, and a functional backend. Demonstrates proficiency in MERN & MEAN stack development.
 
 ![Portfolio Preview](https://via.placeholder.com/1200x600/6366f1/ffffff?text=Modern+Portfolio+Preview)
 
@@ -198,7 +198,9 @@ If you have any questions or need help setting up the portfolio, feel free to re
 
 - Create an issue in this repository
 - Contact via the contact form on the live site
-- Email: your-email@example.com
+- Email: sushantabhowmick@gmail.com
+- Phone: +91 8017068720
+- GitHub: https://github.com/SushantaBhowmick
 
 ---
 
