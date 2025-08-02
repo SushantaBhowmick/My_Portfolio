@@ -15,7 +15,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "sushantabhowmick@gmail.com",
+    value: "bhosushanta922@gmail.com",
     href: "mailto:sushantabhowmick@gmail.com",
     description: "Drop me a line anytime"
   },
@@ -140,12 +140,12 @@ export function ContactSection() {
             </Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-                Let's Create Together
+                Let&apos;s Create Together
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind or just want to chat? I'd love to hear from you. 
-              Let's discuss how we can bring your ideas to life.
+              Have a project in mind or just want to chat? I&apos;d love to hear from you. 
+              Let&apos;s discuss how we can bring your ideas to life.
             </p>
           </motion.div>
 
@@ -154,12 +154,12 @@ export function ContactSection() {
             <motion.div variants={itemVariants} className="space-y-8">
               <div>
                 <h3 className="text-2xl font-semibold mb-6">
-                  Let's start a conversation
+                  Let&apos;s start a conversation
                 </h3>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  I'm always excited to work on new projects and collaborate with 
+                  I&apos;m always excited to work on new projects and collaborate with 
                   passionate people. Whether you have a specific project in mind or 
-                  just want to explore possibilities, I'm here to help.
+                  just want to explore possibilities, I&apos;m here to help.
                 </p>
               </div>
 

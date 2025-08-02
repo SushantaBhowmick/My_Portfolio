@@ -112,9 +112,26 @@ A stunning, modern portfolio website showcasing Sushanta Bhowmick's full-stack d
 │       ├── utils.ts         # Utility functions
 │       └── supabase.ts      # Supabase client
 ├── public/                  # Static assets
+├── FEATURES.md             # 📖 Comprehensive features documentation
 ├── SUPABASE_SETUP.md       # Database setup guide
 └── README.md               # Project documentation
 ```
+
+## 📖 **Detailed Documentation**
+
+For comprehensive information about all features, packages, and technical implementation, see:
+
+- **[FEATURES.md](FEATURES.md)** - Complete features & technical documentation
+- **[SUPABASE_SETUP.md](SUPABASE_SETUP.md)** - Backend setup guide
+
+### Quick Links:
+- [🌟 All Features Overview](FEATURES.md#-features-overview)
+- [📦 Package Dependencies & Uses](FEATURES.md#-package-dependencies)
+- [🏗️ Project Architecture](FEATURES.md#️-project-architecture)
+- [⚙️ Technical Implementation](FEATURES.md#️-technical-implementation)
+- [🚀 Performance Optimizations](FEATURES.md#-performance-optimizations)
+- [🎨 Customization Guide](FEATURES.md#-customization-guide)
+- [🚀 Deployment Guide](FEATURES.md#-deployment-guide)
 
 ## 🎨 Customization
 
