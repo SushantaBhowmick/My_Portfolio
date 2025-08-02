@@ -4,9 +4,10 @@ import { useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Sphere, MeshDistortMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
+import { Mesh, Group } from 'three';
 
 function FloatingGeometry() {
-  const meshRef = useRef<any>();
+  const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
   useFrame((state) => {
@@ -40,7 +41,7 @@ function FloatingGeometry() {
 
 function ParticleField() {
   const { viewport } = useThree();
-  const particlesRef = useRef<any>();
+  const particlesRef = useRef<Group>(null);
 
   useFrame((state) => {
     if (particlesRef.current) {

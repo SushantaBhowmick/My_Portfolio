@@ -7,6 +7,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Code, Palette, Server, Database, Wrench, Zap } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
+interface Skill {
+  name: string;
+  level: number;
+  description: string;
+}
+
+interface SkillCategory {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  title: string;
+  color: string;
+  skills: Skill[];
+}
+
 const skillCategories = {
   frontend: {
     icon: Code,
@@ -49,7 +62,7 @@ const skillCategories = {
   }
 };
 
-function SkillBar({ skill, index, inView }: { skill: any; index: number; inView: boolean }) {
+function SkillBar({ skill, index, inView }: { skill: Skill; index: number; inView: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -82,7 +95,7 @@ function SkillBar({ skill, index, inView }: { skill: any; index: number; inView:
   );
 }
 
-function SkillCategory({ category, skills, inView }: { category: any; skills: any[]; inView: boolean }) {
+function SkillCategory({ category, skills, inView }: { category: SkillCategory; skills: Skill[]; inView: boolean }) {
   const IconComponent = category.icon;
 
   return (
@@ -211,7 +224,7 @@ export function SkillsSection() {
               { label: "Frameworks", value: "10+", icon: Palette },
               { label: "Databases", value: "5+", icon: Database },
               { label: "Tools", value: "15+", icon: Wrench }
-            ].map((stat, index) => (
+            ].map((stat) => (
               <motion.div
                 key={stat.label}
                 whileHover={{ y: -5 }}

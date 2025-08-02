@@ -7,9 +7,20 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink, Github, Folder, Filter } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import Image from "next/image";
 
-const projectsData = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  technologies: string[];
+  liveUrl: string;
+  githubUrl: string;
+  featured: boolean;
+}
+
+const projectsData: Project[] = [
   {
     id: 1,
     title: "Golf Course Management System",
@@ -80,7 +91,7 @@ const projectsData = [
 
 const categories = ["All", "Featured", "Full-Stack", "Frontend", "Backend"];
 
-function ProjectCard({ project, index }: { project: any; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -305,8 +316,8 @@ export function ProjectsSection() {
                   Interested in working together?
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  I'm always open to discussing new opportunities and exciting projects. 
-                  Let's create something amazing together.
+                  I&apos;m always open to discussing new opportunities and exciting projects. 
+                  Let&apos;s create something amazing together.
                 </p>
                 <Button size="lg" className="group" onClick={() => {
                   const element = document.getElementById("contact");

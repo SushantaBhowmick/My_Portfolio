@@ -17,7 +17,7 @@ const navigationItems = [
 const socialLinks = [
   { icon: Github, href: "https://github.com/SushantaBhowmick", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/sushanta-bhowmick", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:sushantabhowmick@gmail.com", label: "Email" },
+  { icon: Mail, href: "mailto:bhosushanta922@gmail.com", label: "Email" },
 ];
 
 export function Navigation() {
@@ -27,6 +27,7 @@ export function Navigation() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
+    toggleTheme();
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };

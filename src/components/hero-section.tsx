@@ -83,7 +83,7 @@ export function HeroSection() {
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
               <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-                Hi, I'm{" "}
+                Hi, I&apos;m{" "}
                 <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                   Sushanta Bhowmick
                 </span>
@@ -160,7 +160,7 @@ export function HeroSection() {
               { number: "3+", label: "Years Experience" },
               { number: "25+", label: "Projects Completed" },
               { number: "100%", label: "Client Satisfaction" },
-            ].map((stat, index) => (
+            ].map((stat) => (
               <motion.div
                 key={stat.label}
                 whileHover={{ y: -5 }}

@@ -215,8 +215,7 @@ This is a comprehensive documentation for **Sushanta Bhowmick's Portfolio** - a 
 │   ├── app/                          # Next.js App Router
 │   │   ├── globals.css              # Global styles & CSS variables
 │   │   ├── layout.tsx               # Root layout with metadata
-│   │   ├── page.tsx                 # Homepage component
-│   │   └── favicon.ico              # Site favicon
+│   │   └── page.tsx                 # Homepage component
 │   ├── components/                   # React components
 │   │   ├── ui/                      # Reusable UI components (shadcn)
 │   │   │   ├── badge.tsx            # Badge component
@@ -245,6 +244,12 @@ This is a comprehensive documentation for **Sushanta Bhowmick's Portfolio** - a 
 │       ├── utils.ts                 # Utility functions (cn, etc.)
 │       └── supabase.ts              # Database client & functions
 ├── public/                          # Static assets
+│   ├── favicon.svg                  # Main favicon (SB logo)
+│   ├── favicon-16x16.svg            # 16x16 favicon variant
+│   ├── favicon-32x32.svg            # 32x32 favicon variant
+│   ├── apple-touch-icon.svg         # Apple touch icon (180x180)
+│   ├── site.webmanifest             # PWA manifest file
+│   └── *.svg                        # Other static assets
 ├── components.json                  # shadcn/ui configuration
 ├── tailwind.config.ts              # Tailwind CSS configuration
 ├── tsconfig.json                   # TypeScript configuration
@@ -348,6 +353,69 @@ This is a comprehensive documentation for **Sushanta Bhowmick's Portfolio** - a 
 - **Controlled Components**: React state for form inputs
 - **Validation**: Client-side validation with error states
 - **Submission**: Async form submission with loading states
+
+### 🎯 **Favicon & Branding System**
+
+#### **Personal Branding Integration:**
+- **Custom "SB" Logo**: Initials "Sushanta Bhowmick" in gradient design
+- **Consistent Design**: Matches navigation bar branding
+- **Multiple Formats**: SVG-based for scalability and crisp display
+- **Cross-Platform Support**: Optimized for all devices and browsers
+
+#### **Favicon Implementation:**
+```typescript
+// Layout.tsx - Favicon configuration
+icons: {
+  icon: [
+    { url: "/favicon.svg", type: "image/svg+xml" },
+    { url: "/favicon-16x16.svg", sizes: "16x16", type: "image/svg+xml" },
+    { url: "/favicon-32x32.svg", sizes: "32x32", type: "image/svg+xml" },
+  ],
+  apple: [
+    { url: "/apple-touch-icon.svg", sizes: "180x180", type: "image/svg+xml" },
+  ],
+  shortcut: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  other: [
+    { rel: "mask-icon", url: "/favicon.svg", color: "#6366f1" },
+  ],
+},
+manifest: "/site.webmanifest",
+themeColor: "#6366f1",
+```
+
+#### **Favicon Files Created:**
+- **`favicon.svg`**: Main 32x32 favicon with gradient "SB" text
+- **`favicon-16x16.svg`**: Optimized 16x16 version for small displays
+- **`favicon-32x32.svg`**: Standard 32x32 version for desktop browsers
+- **`apple-touch-icon.svg`**: 180x180 version for iOS devices
+- **`site.webmanifest`**: PWA manifest with app information
+
+#### **Design Specifications:**
+- **Color Scheme**: Gradient from `#6366f1` to `#8b5cf6` (primary brand colors)
+- **Typography**: System font stack with bold weight (700)
+- **Border Radius**: Proportional rounded corners (3px for 16x16, 6px for 32x32)
+- **Scalability**: Vector-based SVG format ensures crisp display at any size
+
+#### **PWA Manifest Configuration:**
+```json
+{
+  "name": "Sushanta Bhowmick - Full-Stack Developer",
+  "short_name": "Sushanta Bhowmick",
+  "description": "Full-Stack Developer specializing in MERN & MEAN stack",
+  "theme_color": "#6366f1",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
+```
+
+#### **Browser Support:**
+- **Modern Browsers**: SVG favicons work in Chrome, Firefox, Safari, Edge
+- **iOS Safari**: Apple touch icon for home screen bookmarks
+- **Safari Pinned Tabs**: Mask icon with brand color
+- **PWA Support**: Manifest file enables app-like experience
+- **Theme Integration**: Theme color matches browser UI on mobile
 
 ---
 

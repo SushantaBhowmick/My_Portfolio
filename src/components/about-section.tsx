@@ -94,7 +94,7 @@ export function AboutSection() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I'm a passionate full-stack developer with a love for creating beautiful, 
+              I&apos;m a passionate full-stack developer with a love for creating beautiful, 
               functional, and user-centered digital experiences.
             </p>
           </motion.div>
@@ -112,7 +112,7 @@ export function AboutSection() {
                 </p>
                 
                 <p className="text-muted-foreground leading-relaxed">
-                  Currently working at Xpliv Technologies as a Full-Stack Developer, I've built 
+                  Currently working at Xpliv Technologies as a Full-Stack Developer, I&apos;ve built 
                   enterprise solutions including Golf Course Management Systems and client in-house 
                   products using cutting-edge technologies like TypeScript, React, Node.js, and AWS.
                 </p>
