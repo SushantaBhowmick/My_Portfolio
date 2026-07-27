@@ -1,18 +1,9 @@
-import { createClient } from "@/lib/supabase/server";
 import { ProfileForm } from "@/components/admin/profile-form";
+import { getAdminProfile } from "@/lib/admin/queries";
 import { redirect } from "next/navigation";
 
 export default async function AdminProfilePage() {
-  const supabase = await createClient();
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("*")
-    .limit(1)
-    .maybeSingle();
-  const { data: roles } = await supabase
-    .from("hero_roles")
-    .select("*")
-    .order("sort_order");
+  const { profile, roles } = await getAdminProfile();
 
   if (!profile) {
     redirect("/admin");
@@ -26,7 +17,7 @@ export default async function AdminProfilePage() {
           Personal details, stats, socials, and hero roles
         </p>
       </div>
-      <ProfileForm profile={profile} roles={roles ?? []} />
+      <ProfileForm profile={profile} roles={roles} />
     </div>
   );
 }

@@ -1,12 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
 import { ProjectsManager } from "@/components/admin/projects-manager";
+import { getAdminProjects } from "@/lib/admin/queries";
 
 export default async function AdminProjectsPage() {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("projects")
-    .select("*")
-    .order("sort_order");
+  const projects = await getAdminProjects();
 
   return (
     <div className="space-y-6">
@@ -16,7 +12,7 @@ export default async function AdminProjectsPage() {
           Add, edit, reorder, and upload project images
         </p>
       </div>
-      <ProjectsManager projects={data ?? []} />
+      <ProjectsManager projects={projects} />
     </div>
   );
 }

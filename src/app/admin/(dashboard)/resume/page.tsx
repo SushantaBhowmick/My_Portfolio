@@ -1,12 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
 import { ResumeManager } from "@/components/admin/resume-manager";
+import { getAdminResumes } from "@/lib/admin/queries";
 
 export default async function AdminResumePage() {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("resumes")
-    .select("*")
-    .order("uploaded_at", { ascending: false });
+  const resumes = await getAdminResumes();
 
   return (
     <div className="space-y-6">
@@ -16,7 +12,7 @@ export default async function AdminResumePage() {
           Upload a PDF — the public Download Resume button uses the active file
         </p>
       </div>
-      <ResumeManager resumes={data ?? []} />
+      <ResumeManager resumes={resumes} />
     </div>
   );
 }

@@ -1,13 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
 import { SkillsManager } from "@/components/admin/skills-manager";
+import { getAdminSkills } from "@/lib/admin/queries";
 
 export default async function AdminSkillsPage() {
-  const supabase = await createClient();
-  const [categories, skills, learningTags] = await Promise.all([
-    supabase.from("skill_categories").select("*").order("sort_order"),
-    supabase.from("skills").select("*").order("sort_order"),
-    supabase.from("learning_tags").select("*").order("sort_order"),
-  ]);
+  const { categories, skills, learningTags } = await getAdminSkills();
 
   return (
     <div className="space-y-6">
@@ -18,9 +13,9 @@ export default async function AdminSkillsPage() {
         </p>
       </div>
       <SkillsManager
-        categories={categories.data ?? []}
-        skills={skills.data ?? []}
-        learningTags={learningTags.data ?? []}
+        categories={categories}
+        skills={skills}
+        learningTags={learningTags}
       />
     </div>
   );

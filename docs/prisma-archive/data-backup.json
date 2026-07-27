@@ -1,0 +1,526 @@
+{
+  "exportedAt": "2026-07-27T11:20:03.428Z",
+  "profiles": [
+    {
+      "id": "b8e358e8-06b2-4836-9401-d7b3f695afd6",
+      "fullName": "Sushanta Bhowmick",
+      "displayName": "Sushanta",
+      "headline": "Full-Stack Developer",
+      "bioShort": "I craft exceptional digital experiences using MERN & MEAN stack with 3+ years of experience. Specializing in React, Next.js, Node.js, TypeScript, and modern web technologies.",
+      "bioLong": "My journey in web development started with a BTech in Computer Science & Technology and has evolved into 3+ years of hands-on experience building scalable web applications. I specialize in both MERN and MEAN stacks, creating everything from e-commerce platforms to learning management systems.\n\nCurrently working at Xpliv Technologies as a Full-Stack Developer, I've built enterprise solutions including Golf Course Management Systems and client in-house products using cutting-edge technologies like TypeScript, React, Node.js, and AWS.",
+      "availabilityText": "Available for new opportunities",
+      "isAvailable": true,
+      "email": "bhosushanta922@gmail.com",
+      "phone": "+91 8017068720",
+      "location": "Kolkata, West Bengal, India",
+      "githubUrl": "https://github.com/SushantaBhowmick",
+      "linkedinUrl": "https://www.linkedin.com/in/sushanta-bhowmick",
+      "calendarUrl": null,
+      "yearsExperience": "3+",
+      "projectsCompleted": "25+",
+      "clientSatisfaction": "100%",
+      "updatedAt": "2026-07-27T09:42:52.088Z"
+    }
+  ],
+  "heroRoles": [
+    {
+      "id": "df2eee61-e24d-4995-817d-ed098ba4e390",
+      "label": "Full-Stack Developer",
+      "sortOrder": 1,
+      "isActive": true,
+      "createdAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "3cc444e3-bd72-4212-a09d-2cb6a58daa5f",
+      "label": "React Specialist",
+      "sortOrder": 2,
+      "isActive": true,
+      "createdAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "cc23875c-c204-4f80-9da5-8f39b36beeda",
+      "label": "Node.js Expert",
+      "sortOrder": 3,
+      "isActive": true,
+      "createdAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "49048d97-f66f-49b8-98a1-9a6053911e1e",
+      "label": "UI/UX Enthusiast",
+      "sortOrder": 4,
+      "isActive": true,
+      "createdAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "d0e20a76-864a-4599-9e7c-a1fc833cf9fa",
+      "label": "Problem Solver",
+      "sortOrder": 5,
+      "isActive": true,
+      "createdAt": "2026-07-27T08:11:07.135Z"
+    }
+  ],
+  "resumes": [
+    {
+      "id": "407a7211-b103-4a5b-9c79-c80d995fd965",
+      "filePath": "1785145819106-Sushanta_Bhowmick_Resume.pdf",
+      "fileUrl": "https://hampiokftlozrrsersva.supabase.co/storage/v1/object/public/resumes/1785145819106-Sushanta_Bhowmick_Resume.pdf",
+      "fileName": "Sushanta_Bhowmick_Resume.pdf",
+      "versionLabel": "July 2026",
+      "isActive": true,
+      "uploadedAt": "2026-07-27T09:50:20.103Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "a51d32db-acce-473a-a49b-e204265f44e2",
+      "title": "Ecommerce App - MERN Stack",
+      "description": "Complete e-commerce solution with product catalog, cart, payments, and user management built with MERN stack technologies.",
+      "imageUrl": null,
+      "category": "Full-Stack",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express",
+        "Stripe"
+      ],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/SushantaBhowmick",
+      "featured": true,
+      "isPublished": true,
+      "sortOrder": 2,
+      "createdAt": "2026-07-27T08:11:07.135Z",
+      "updatedAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "3d2a1dbe-fcc7-4f2b-95b8-8c905d616ec7",
+      "title": "Learning Management System",
+      "description": "Comprehensive LMS where students can attend live classes, access courses, get certificates, and age-based course recommendations.",
+      "imageUrl": null,
+      "category": "Full-Stack",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Socket.io",
+        "WebRTC"
+      ],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/SushantaBhowmick",
+      "featured": true,
+      "isPublished": true,
+      "sortOrder": 3,
+      "createdAt": "2026-07-27T08:11:07.135Z",
+      "updatedAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "793cf03b-5a23-4335-a00c-dbb64e5b46ae",
+      "title": "Real-Time Workspace (SaaS)",
+      "description": "Scalable SaaS platform for real-time collaboration with workspace management and team features.",
+      "imageUrl": null,
+      "category": "Full-Stack",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Socket.io",
+        "PostgreSQL",
+        "AWS"
+      ],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/SushantaBhowmick",
+      "featured": false,
+      "isPublished": true,
+      "sortOrder": 5,
+      "createdAt": "2026-07-27T08:11:07.135Z",
+      "updatedAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "1296f4e3-0f82-42d0-bf9e-b8e83c9c1cd0",
+      "title": "Social Media App",
+      "description": "Full-featured social media platform with user profiles, posts, comments, and real-time notifications.",
+      "imageUrl": null,
+      "category": "Full-Stack",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Socket.io",
+        "Express"
+      ],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/SushantaBhowmick",
+      "featured": false,
+      "isPublished": true,
+      "sortOrder": 6,
+      "createdAt": "2026-07-27T08:11:07.135Z",
+      "updatedAt": "2026-07-27T08:11:07.135Z"
+    },
+    {
+      "id": "a9e97e32-0959-48a8-8ada-113959112df2",
+      "title": "Golf Course Management System",
+      "description": "Enterprise-level management system for golf courses with client in-house product features, built using modern TypeScript and React technologies.",
+      "imageUrl": "https://hampiokftlozrrsersva.supabase.co/storage/v1/object/public/project-images/1785148667729-Screenshot-2026-07-27-160726.png",
+      "category": "Full-Stack",
+      "technologies": [
+        "TypeScript",
+        "React.js",
+        "Node.js",
+        "TailwindCSS",
+        "AWS",
+        "Swagger"
+      ],
+      "liveUrl": "https://app.turfassistant.com/",
+      "githubUrl": "https://github.com/SushantaBhowmick",
+      "featured": true,
+      "isPublished": true,
+      "sortOrder": 1,
+      "createdAt": "2026-07-27T08:11:07.135Z",
+      "updatedAt": "2026-07-27T10:37:51.245Z"
+    },
+    {
+      "id": "be21ac35-a934-4b4e-919d-6455984279d7",
+      "title": "Course Bundler",
+      "description": "Full-stack course management platform with payment integration using Stripe and modern authentication systems.",
+      "imageUrl": null,
+      "category": "Full-Stack",
+      "technologies": [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Stripe",
+        "Supabase"
+      ],
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/SushantaBhowmick",
+      "featured": true,
+      "isPublished": true,
+      "sortOrder": 4,
+      "createdAt": "2026-07-27T08:11:07.135Z",
+      "updatedAt": "2026-07-27T10:40:24.993Z"
+    }
+  ],
+  "skillCategories": [
+    {
+      "id": "4934506e-ada3-40d3-b637-998376b0b04b",
+      "key": "frontend",
+      "title": "Frontend",
+      "color": "from-blue-500 to-cyan-500",
+      "iconKey": "Code",
+      "sortOrder": 1
+    },
+    {
+      "id": "8df90018-a789-45d5-8898-60e0a0224a92",
+      "key": "backend",
+      "title": "Backend",
+      "color": "from-green-500 to-emerald-500",
+      "iconKey": "Server",
+      "sortOrder": 2
+    },
+    {
+      "id": "488926b4-0ec2-45b6-b8b6-fbf5433235a4",
+      "key": "tools",
+      "title": "Tools & Others",
+      "color": "from-purple-500 to-pink-500",
+      "iconKey": "Wrench",
+      "sortOrder": 3
+    }
+  ],
+  "skills": [
+    {
+      "id": "26052f77-e1e8-4390-948a-6304e909dd8a",
+      "categoryId": "4934506e-ada3-40d3-b637-998376b0b04b",
+      "name": "React.js",
+      "level": 95,
+      "description": "Advanced React patterns, hooks, and optimization",
+      "sortOrder": 1,
+      "isPublished": true
+    },
+    {
+      "id": "3f978107-94dd-4f86-bf26-4ef14bbdf36c",
+      "categoryId": "4934506e-ada3-40d3-b637-998376b0b04b",
+      "name": "Next.js",
+      "level": 90,
+      "description": "App Router, SSR, SSG, and modern Next.js features",
+      "sortOrder": 2,
+      "isPublished": true
+    },
+    {
+      "id": "68f2b6bd-3cd0-48d8-aafe-c5b736bfaaf0",
+      "categoryId": "4934506e-ada3-40d3-b637-998376b0b04b",
+      "name": "TypeScript",
+      "level": 90,
+      "description": "Type-safe development with advanced TS patterns",
+      "sortOrder": 3,
+      "isPublished": true
+    },
+    {
+      "id": "e680430b-83c2-4ab5-b020-4bc7ffc0c441",
+      "categoryId": "4934506e-ada3-40d3-b637-998376b0b04b",
+      "name": "Tailwind CSS",
+      "level": 92,
+      "description": "Modern utility-first CSS framework",
+      "sortOrder": 4,
+      "isPublished": true
+    },
+    {
+      "id": "985c08a0-d925-4a8b-9772-75fae7cd10cc",
+      "categoryId": "4934506e-ada3-40d3-b637-998376b0b04b",
+      "name": "Angular",
+      "level": 85,
+      "description": "MEAN stack development and enterprise applications",
+      "sortOrder": 5,
+      "isPublished": true
+    },
+    {
+      "id": "1e2f7568-90dc-440e-8e40-d407920bafff",
+      "categoryId": "4934506e-ada3-40d3-b637-998376b0b04b",
+      "name": "JavaScript",
+      "level": 95,
+      "description": "ES6+, modern JavaScript and advanced patterns",
+      "sortOrder": 6,
+      "isPublished": true
+    },
+    {
+      "id": "28112335-ec96-4dca-9f79-499a3bf02e75",
+      "categoryId": "8df90018-a789-45d5-8898-60e0a0224a92",
+      "name": "Node.js",
+      "level": 92,
+      "description": "Server-side JavaScript and API development",
+      "sortOrder": 1,
+      "isPublished": true
+    },
+    {
+      "id": "538d6519-274d-498a-bc6c-73f36d7e200d",
+      "categoryId": "8df90018-a789-45d5-8898-60e0a0224a92",
+      "name": "Express.js",
+      "level": 90,
+      "description": "RESTful APIs and middleware development",
+      "sortOrder": 2,
+      "isPublished": true
+    },
+    {
+      "id": "9b94ed20-97d5-42a2-97b9-41f9f42c3c01",
+      "categoryId": "8df90018-a789-45d5-8898-60e0a0224a92",
+      "name": "MongoDB",
+      "level": 88,
+      "description": "NoSQL database design and aggregation",
+      "sortOrder": 3,
+      "isPublished": true
+    },
+    {
+      "id": "36e636fc-76b6-4984-a2a8-c4be7b9363c5",
+      "categoryId": "8df90018-a789-45d5-8898-60e0a0224a92",
+      "name": "PostgreSQL",
+      "level": 85,
+      "description": "Relational database design and optimization",
+      "sortOrder": 4,
+      "isPublished": true
+    },
+    {
+      "id": "537920be-fa8c-4f6b-bb60-3ad1413e416f",
+      "categoryId": "8df90018-a789-45d5-8898-60e0a0224a92",
+      "name": "Supabase",
+      "level": 85,
+      "description": "Modern backend-as-a-service platform",
+      "sortOrder": 5,
+      "isPublished": true
+    },
+    {
+      "id": "52236434-fd05-4322-9fa3-f38cb16d5444",
+      "categoryId": "8df90018-a789-45d5-8898-60e0a0224a92",
+      "name": "Stripe",
+      "level": 88,
+      "description": "Payment integration and processing systems",
+      "sortOrder": 6,
+      "isPublished": true
+    },
+    {
+      "id": "8c3fb50b-7f32-4c04-9b5a-f350b373f266",
+      "categoryId": "488926b4-0ec2-45b6-b8b6-fbf5433235a4",
+      "name": "Git & GitHub",
+      "level": 95,
+      "description": "Version control and collaborative development",
+      "sortOrder": 1,
+      "isPublished": true
+    },
+    {
+      "id": "c98f2301-21cc-45ba-a67d-a4e0171fe14a",
+      "categoryId": "488926b4-0ec2-45b6-b8b6-fbf5433235a4",
+      "name": "AWS",
+      "level": 85,
+      "description": "Cloud services and deployment solutions",
+      "sortOrder": 2,
+      "isPublished": true
+    },
+    {
+      "id": "50b1aff6-74dc-4bfa-9226-7c9c76bcee7f",
+      "categoryId": "488926b4-0ec2-45b6-b8b6-fbf5433235a4",
+      "name": "Swagger",
+      "level": 88,
+      "description": "API documentation and testing",
+      "sortOrder": 3,
+      "isPublished": true
+    },
+    {
+      "id": "80d87fe0-ab6a-42fc-8ea0-865066a2d16e",
+      "categoryId": "488926b4-0ec2-45b6-b8b6-fbf5433235a4",
+      "name": "Docker",
+      "level": 78,
+      "description": "Containerization and deployment",
+      "sortOrder": 4,
+      "isPublished": true
+    },
+    {
+      "id": "df107af3-3fbb-4401-8a7f-48cdf7d78d4b",
+      "categoryId": "488926b4-0ec2-45b6-b8b6-fbf5433235a4",
+      "name": "Vercel",
+      "level": 90,
+      "description": "Modern deployment and hosting platform",
+      "sortOrder": 5,
+      "isPublished": true
+    },
+    {
+      "id": "45677206-eadd-4312-8bc5-11687a5d0930",
+      "categoryId": "488926b4-0ec2-45b6-b8b6-fbf5433235a4",
+      "name": "Prisma",
+      "level": 82,
+      "description": "Database ORM and query optimization",
+      "sortOrder": 6,
+      "isPublished": true
+    }
+  ],
+  "learningTags": [
+    {
+      "id": "e7be10d6-8bd9-4b76-b615-524c78fa1fdf",
+      "label": "AI/ML",
+      "sortOrder": 1
+    },
+    {
+      "id": "f8be3c41-35ad-4d26-b5a8-5b53c06838c6",
+      "label": "Web3",
+      "sortOrder": 2
+    },
+    {
+      "id": "6aab66db-40aa-4d17-b7ec-a79536abb57c",
+      "label": "Rust",
+      "sortOrder": 3
+    },
+    {
+      "id": "fc8f1743-8a29-41c0-9280-7086d3077b05",
+      "label": "Go",
+      "sortOrder": 4
+    },
+    {
+      "id": "fded7160-b6d8-4e08-a1f1-fc70ed9dea47",
+      "label": "Kubernetes",
+      "sortOrder": 5
+    },
+    {
+      "id": "d1863772-5234-4fd3-888d-7ab08b103ca0",
+      "label": "Microservices",
+      "sortOrder": 6
+    }
+  ],
+  "aboutHighlights": [
+    {
+      "id": "bda23758-d3b1-4fde-b617-527cc9b31fc7",
+      "iconKey": "Code2",
+      "title": "Clean Code",
+      "description": "Writing maintainable, scalable, and efficient code is my passion.",
+      "sortOrder": 1
+    },
+    {
+      "id": "24206de6-925e-4d2b-9e03-7edbb9ee9d4b",
+      "iconKey": "Lightbulb",
+      "title": "Innovation",
+      "description": "Always exploring new technologies and creative solutions.",
+      "sortOrder": 2
+    },
+    {
+      "id": "9309818b-3363-4ef7-b11f-397dbd0f7d80",
+      "iconKey": "Target",
+      "title": "Results-Driven",
+      "description": "Focused on delivering exceptional results that exceed expectations.",
+      "sortOrder": 3
+    }
+  ],
+  "journeyItems": [
+    {
+      "id": "b4313a6f-013d-4a55-82b5-624ebb4b7859",
+      "year": "2020-22",
+      "title": "Foundation Building",
+      "description": "Completed Diploma in Computer Science & Technology from Elite Institute",
+      "sortOrder": 1
+    },
+    {
+      "id": "eac80a0d-f2cc-4122-beca-56d93199130d",
+      "year": "2022",
+      "title": "Professional Start",
+      "description": "Started at Dhisar Infotech & Kalyani, building LMS and payment systems",
+      "sortOrder": 2
+    },
+    {
+      "id": "2132304f-3af0-4327-afa1-c1f6505b6189",
+      "year": "2022-25",
+      "title": "Academic Excellence",
+      "description": "Pursuing BTech in Computer Science from Guru Nanak Institution Of Technology",
+      "sortOrder": 3
+    },
+    {
+      "id": "6e285d46-c94b-4c7c-834e-b5febe8e7044",
+      "year": "2024-Present",
+      "title": "Senior Developer",
+      "description": "Full-Stack Developer at Xpliv Technologies, building enterprise solutions",
+      "sortOrder": 4
+    }
+  ],
+  "funFacts": [
+    {
+      "id": "2a1c7d06-4e6b-4513-8123-d733472162a7",
+      "label": "Coffee Enthusiast",
+      "iconKey": "Coffee",
+      "sortOrder": 1
+    },
+    {
+      "id": "421c0944-4b72-4582-83df-7dbe3d4cf5d8",
+      "label": "Open Source",
+      "iconKey": "Heart",
+      "sortOrder": 2
+    },
+    {
+      "id": "094bfd4d-0c48-414b-97cd-527afebf0ed0",
+      "label": "Clean Code",
+      "iconKey": "Code2",
+      "sortOrder": 3
+    }
+  ],
+  "contactSubmissions": [],
+  "automations": [
+    {
+      "id": "26a065f1-1f4b-4c35-bce7-39918a3fba5f",
+      "key": "contact_notify",
+      "name": "New contact notification",
+      "description": "Send a webhook or email alert when someone submits the contact form.",
+      "enabled": false,
+      "config": {
+        "email": "",
+        "webhook_url": ""
+      },
+      "updatedAt": "2026-07-27T08:11:07.135Z"
+    }
+  ],
+  "automationLogs": [],
+  "siteSettings": [
+    {
+      "id": "1634c7fd-a0bd-4c21-baec-d58c46c64228",
+      "seoTitle": "Sushanta Bhowmick | Full-Stack Developer",
+      "seoDescription": "Full-Stack Developer specializing in MERN & MEAN stack with 3+ years of experience. Expert in React, Next.js, Node.js, and modern web technologies.",
+      "ogImageUrl": null,
+      "showAbout": true,
+      "showSkills": true,
+      "showProjects": true,
+      "showContact": true,
+      "updatedAt": "2026-07-27T08:11:07.135Z"
+    }
+  ]
+}

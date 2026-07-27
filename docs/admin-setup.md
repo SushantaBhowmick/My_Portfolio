@@ -1,20 +1,26 @@
 # Admin CMS Setup
 
-## 1. Migrations (already applied if you ran the script)
+## 1. Database (Prisma)
 
 ```bash
-node scripts/run-migrations.mjs
+npm install
+npx prisma migrate deploy   # apply migrations
+npm run db:seed             # safe seed if tables are empty
 ```
 
 ## 2. Create your admin user
 
 ```bash
-node scripts/create-admin.mjs your-email@example.com YourSecurePassword
+npm run admin:create -- your-email@example.com YourSecurePassword
 ```
 
 Or create a user in Supabase Dashboard → Authentication → Users → Add user (confirm email).
 
 ## 3. Sign in
+
+```bash
+npm run dev
+```
 
 Open [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
 
@@ -32,6 +38,6 @@ Open [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
 
 ## Env notes
 
-- Keep `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for the client
-- Prefer `SUPABASE_SERVICE_ROLE_KEY` (not `NEXT_PUBLIC_…`) for server-only automations
-- `DB_PASS` + pooler host used by migration script
+- `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` for Auth / Storage / contact form
+- `DATABASE_URL` + `DIRECT_URL` for Prisma
+- Prefer `SUPABASE_SERVICE_ROLE_KEY` (server-only) for automations

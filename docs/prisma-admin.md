@@ -1,45 +1,43 @@
 # Prisma + Admin Access
 
-## Architecture
+## Layout (after clean `prisma init`)
 
-| Concern | Tool |
-|---------|------|
-| Auth (login / session) | Supabase Auth + `src/middleware.ts` |
-| File uploads (resume, images) | Supabase Storage |
-| Typed DB reads/writes | **Prisma 6** → Postgres |
-| Contact form insert | Supabase anon client (RLS insert) |
-
-## Middleware
-
-`src/middleware.ts` runs on `/admin` and `/admin/:path*`:
-
-- Unauthenticated → redirect to `/admin/login?next=...`
-- Already signed in on login page → redirect to dashboard
-- Uses `supabase.auth.getUser()` (JWT validation), not `getSession()` alone
-
-Dashboard layout also double-checks the user server-side.
-
-## Prisma commands
-
-```bash
-npm run db:generate   # prisma generate
-npm run db:pull       # introspect remote schema (optional)
-npm run db:migrate    # our SQL seed/migration scripts
+```
+prisma.config.ts                 ← from prisma init (+ seed + DIRECT_URL for CLI)
+prisma/
+  schema.prisma                  ← models (restored from snapshot)
+  seed.ts                        ← safe seed
+  migrations/
+    20260727120000_init/         ← baseline (marked applied; DB not wiped)
+  sql/
+    supabase_storage_reference.sql
+docs/
+  prisma-snapshot.md             ← human-readable backup
+  prisma-archive/                ← schema.prisma.bak + seed.ts.bak
 ```
 
-Connection strings live in `.env`:
+## Commands
 
-- `DATABASE_URL` — pooler `:6543` with `?pgbouncer=true` (queries)
-- `DIRECT_URL` — session pooler `:5432` (migrate / introspect)
+```bash
+# Stop npm run dev first on Windows (avoids EPERM on generate)
 
-Password special characters (`@`) must be URL-encoded as `%40`.
+npx prisma generate
+npx prisma migrate dev --name your_change   # new changes
+npx prisma migrate deploy                   # CI / prod
+npx prisma db seed
+npx prisma studio
+npx prisma migrate status
+```
 
-## ENOENT / `.next` errors
+Or via npm scripts: `db:generate`, `db:migrate`, `db:seed`, etc.
 
-If you see missing `app-build-manifest.json` while `npm run dev` is running:
+## Env
 
-1. Stop the dev server (Ctrl+C)
-2. Delete `.next`
-3. Run `npm run dev` again
+- `DATABASE_URL` — transaction pooler `:6543?pgbouncer=true` (app queries in schema)
+- `DIRECT_URL` — session pooler `:5432` (CLI migrate via `prisma.config.ts`)
 
-Do **not** run `next build` while `next dev` is active — they fight over the same `.next` folder.
+## Important
+
+- Live Supabase **data was not deleted** during re-init
+- Experimental `Test` model was **not** restored (see archive if you need it)
+- If `prisma generate` hits `EPERM`, stop Next.js, then regenerate

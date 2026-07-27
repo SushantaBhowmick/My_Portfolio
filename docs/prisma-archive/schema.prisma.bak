@@ -13,7 +13,7 @@ model Profile {
   id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   fullName           String    @default("Sushanta Bhowmick") @map("full_name")
   displayName        String    @default("Sushanta") @map("display_name")
-  headline           String?   @default("Full-Stack Developer")
+  headline           String?
   bioShort           String?   @map("bio_short")
   bioLong            String?   @map("bio_long")
   availabilityText   String?   @default("Available for new opportunities") @map("availability_text")
@@ -92,7 +92,7 @@ model Skill {
   description String?       @default("")
   sortOrder   Int?          @default(0) @map("sort_order")
   isPublished Boolean?      @default(true) @map("is_published")
-  category    SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  category    SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   @@map("skills")
 }
@@ -143,8 +143,6 @@ model ContactSubmission {
   status    String?   @default("new")
   createdAt DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
 
-  @@index([createdAt(sort: Desc)], map: "idx_contact_submissions_created_at")
-  @@index([status], map: "idx_contact_submissions_status")
   @@map("contact_submissions")
 }
 
@@ -167,7 +165,7 @@ model AutomationLog {
   status       String
   payload      Json?       @default("{}")
   createdAt    DateTime?   @default(now()) @map("created_at") @db.Timestamptz(6)
-  automation   Automation? @relation(fields: [automationId], references: [id], onUpdate: NoAction)
+  automation   Automation? @relation(fields: [automationId], references: [id], onDelete: SetNull)
 
   @@map("automation_logs")
 }
@@ -184,4 +182,15 @@ model SiteSettings {
   updatedAt      DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
 
   @@map("site_settings")
+}
+
+
+
+
+
+model Test {
+  id    String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title String?
+
+  @@map("tests")
 }
