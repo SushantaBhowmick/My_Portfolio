@@ -222,3 +222,6 @@ If you have any questions or need help setting up the portfolio, feel free to re
 ---
 
 **Built with ❤️ using modern web technologies**
+
+<!-- to crete admin -->
+# npm run admin:create -- example@gmail.com MyStrongPass123

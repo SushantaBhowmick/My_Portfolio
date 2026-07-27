@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { AdminShell } from "@/components/admin/admin-shell";
+import { AdminAppFrame } from "@/components/admin/admin-app-frame";
 
 export default async function DashboardLayout({
   children,
@@ -16,5 +16,5 @@ export default async function DashboardLayout({
     redirect("/admin/login");
   }
 
-  return <AdminShell>{children}</AdminShell>;
+  return <AdminAppFrame userEmail={user.email}>{children}</AdminAppFrame>;
 }
