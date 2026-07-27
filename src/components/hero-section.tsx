@@ -1,29 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowDown, Download, Code, Sparkles } from "lucide-react";
 import { ThreeScene, AnimatedBackground } from "./three-scene";
+import type { HeroRole, Profile } from "@/lib/supabase/types";
 
-const typingText = [
-  "Full-Stack Developer",
-  "React Specialist", 
-  "Node.js Expert",
-  "UI/UX Enthusiast",
-  "Problem Solver"
-];
-
-export function HeroSection() {
+export function HeroSection({
+  profile,
+  roles,
+  resumeUrl,
+}: {
+  profile: Profile;
+  roles: HeroRole[];
+  resumeUrl: string | null;
+}) {
+  const typingText = useMemo(() => roles.map((r) => r.label), [roles]);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (!typingText.length) return;
+
     const timeout = setTimeout(() => {
-      const fullText = typingText[currentTextIndex];
-      
+      const fullText = typingText[currentTextIndex % typingText.length];
+
       if (isDeleting) {
         setCurrentText(fullText.substring(0, currentText.length - 1));
       } else {
@@ -39,7 +43,7 @@ export function HeroSection() {
     }, isDeleting ? 50 : 100);
 
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentTextIndex]);
+  }, [currentText, isDeleting, currentTextIndex, typingText]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -48,33 +52,45 @@ export function HeroSection() {
     }
   };
 
+  const stats = [
+    { number: profile.years_experience ?? "3+", label: "Years Experience" },
+    { number: profile.projects_completed ?? "25+", label: "Projects Completed" },
+    {
+      number: profile.client_satisfaction ?? "100%",
+      label: "Client Satisfaction",
+    },
+  ];
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       <AnimatedBackground />
-      
-      {/* Three.js Scene */}
+
       <div className="absolute inset-0 opacity-30">
         <ThreeScene />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 container mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6"
-          >
-            <Badge variant="secondary" className="px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-primary/20">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Available for new opportunities
-            </Badge>
-          </motion.div>
+          {profile.is_available && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-6"
+            >
+              <Badge
+                variant="secondary"
+                className="px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-primary/20"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                {profile.availability_text || "Available for new opportunities"}
+              </Badge>
+            </motion.div>
+          )}
 
-          {/* Main Heading */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,18 +101,21 @@ export function HeroSection() {
               <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
                 Hi, I&apos;m{" "}
                 <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  Sushanta Bhowmick
+                  {profile.full_name}
                 </span>
               </span>
             </h1>
-            
-            {/* Animated Role */}
+
             <div className="mt-4 h-16 md:h-20 lg:h-24 flex items-center justify-center">
               <span className="text-2xl md:text-4xl lg:text-5xl font-semibold text-muted-foreground">
-                {currentText}
+                {currentText || profile.headline}
                 <motion.span
                   animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
                   className="text-primary"
                 >
                   |
@@ -105,26 +124,23 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed"
           >
-            I craft exceptional digital experiences using MERN & MEAN stack with 3+ years of experience. 
-            Specializing in React, Next.js, Node.js, TypeScript, and modern web technologies.
+            {profile.bio_short}
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="group relative overflow-hidden px-8 py-3 text-base font-medium"
               onClick={() => scrollToSection("projects")}
             >
@@ -132,35 +148,40 @@ export function HeroSection() {
                 <Code className="w-5 h-5 mr-2" />
                 View My Work
               </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary opacity-0 group-hover:opacity-100"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
             </Button>
 
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="px-8 py-3 text-base font-medium border-2 hover:bg-primary/5"
-            >
-              <Download className="w-5 h-5 mr-2" />
-              Download CV
-            </Button>
+            {resumeUrl ? (
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-3 text-base font-medium border-2 hover:bg-primary/5"
+                asChild
+              >
+                <a href={resumeUrl} target="_blank" rel="noopener noreferrer" download>
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Resume
+                </a>
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-3 text-base font-medium border-2"
+                disabled
+              >
+                <Download className="w-5 h-5 mr-2" />
+                Resume coming soon
+              </Button>
+            )}
           </motion.div>
 
-          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12"
           >
-            {[
-              { number: "3+", label: "Years Experience" },
-              { number: "25+", label: "Projects Completed" },
-              { number: "100%", label: "Client Satisfaction" },
-            ].map((stat) => (
+            {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 whileHover={{ y: -5 }}
@@ -169,14 +190,11 @@ export function HeroSection() {
                 <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
                   {stat.number}
                 </div>
-                <div className="text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -197,7 +215,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Decorative Elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl" />
       <div className="absolute bottom-32 right-16 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
       <div className="absolute top-1/3 right-20 w-16 h-16 bg-primary/15 rounded-full blur-lg" />

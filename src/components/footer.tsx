@@ -4,12 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Github, Linkedin, Mail, ArrowUp, Code } from "lucide-react";
-
-const socialLinks = [
-  { icon: Github, href: "https://github.com/SushantaBhowmick", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/sushanta-bhowmick", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:sushantabhowmick@gmail.com", label: "Email" },
-];
+import type { Profile } from "@/lib/supabase/types";
 
 const quickLinks = [
   { name: "Home", href: "#home" },
@@ -19,7 +14,13 @@ const quickLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
-export function Footer() {
+export function Footer({ profile }: { profile: Profile }) {
+  const socialLinks = [
+    { icon: Github, href: profile.github_url || "https://github.com/SushantaBhowmick", label: "GitHub" },
+    { icon: Linkedin, href: profile.linkedin_url || "https://www.linkedin.com/in/sushanta-bhowmick", label: "LinkedIn" },
+    { icon: Mail, href: profile.email ? `mailto:${profile.email}` : "mailto:sushantabhowmick@gmail.com", label: "Email" },
+  ];
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -33,23 +34,21 @@ export function Footer() {
 
   return (
     <footer className="relative bg-muted/50 border-t border-border/50">
-      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
-        <div 
+        <div
           className="w-full h-full"
           style={{
             backgroundImage: `
               linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
             `,
-            backgroundSize: '20px 20px',
+            backgroundSize: "20px 20px",
           }}
         />
       </div>
 
       <div className="relative container mx-auto px-4 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Brand Section */}
           <div className="lg:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -62,20 +61,24 @@ export function Footer() {
                   <Code className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <span className="font-bold text-xl bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
-                  Sushanta
+                  {profile.display_name || "Sushanta"}
                 </span>
               </div>
               <p className="text-muted-foreground mb-4 max-w-md leading-relaxed">
-                Crafting digital experiences with modern technologies. 
-                Passionate about clean code, innovative solutions, and exceptional user experiences.
+                {profile.bio_short?.slice(0, 140) ||
+                  "Crafting digital experiences with modern technologies."}
               </p>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                <Heart className="w-3 h-3 mr-1" />
-                Available for new projects
-              </Badge>
+              {profile.is_available && (
+                <Badge
+                  variant="secondary"
+                  className="bg-primary/10 text-primary border-primary/20"
+                >
+                  <Heart className="w-3 h-3 mr-1" />
+                  {profile.availability_text || "Available for new projects"}
+                </Badge>
+              )}
             </motion.div>
 
-            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +106,6 @@ export function Footer() {
             </motion.div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -126,7 +128,6 @@ export function Footer() {
             </motion.div>
           </div>
 
-          {/* Contact Info */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -136,25 +137,20 @@ export function Footer() {
               <h3 className="font-semibold text-foreground mb-4">Get In Touch</h3>
               <div className="space-y-2 text-sm">
                 <p className="text-muted-foreground">
-                  <a 
-                    href="mailto:sushantabhowmick@gmail.com" 
+                  <a
+                    href={profile.email ? `mailto:${profile.email}` : "#"}
                     className="hover:text-primary transition-colors"
                   >
-                    sushantabhowmick@gmail.com
+                    {profile.email}
                   </a>
                 </p>
-                <p className="text-muted-foreground">
-                  Kolkata, West Bengal, India
-                </p>
-                <p className="text-muted-foreground">
-                  Available for remote work
-                </p>
+                <p className="text-muted-foreground">{profile.location}</p>
+                <p className="text-muted-foreground">Available for remote work</p>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -163,13 +159,13 @@ export function Footer() {
         >
           <div className="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0">
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © {new Date().getFullYear()} Sushanta Bhowmick. Built with{" "}
-              <span className="text-primary">Next.js</span>, <span className="text-primary">Tailwind CSS</span>, 
-              and <span className="text-primary">Supabase</span>.
+              © {new Date().getFullYear()} {profile.full_name}. Built with{" "}
+              <span className="text-primary">Next.js</span>,{" "}
+              <span className="text-primary">Tailwind CSS</span>, and{" "}
+              <span className="text-primary">Supabase</span>.
             </p>
           </div>
 
-          {/* Back to Top Button */}
           <Button
             variant="outline"
             size="sm"
@@ -181,14 +177,21 @@ export function Footer() {
           </Button>
         </motion.div>
 
-        {/* Tech Stack */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-wrap justify-center gap-2 mt-8 pt-6 border-t border-border/50"
         >
-          {["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Three.js", "Supabase"].map((tech) => (
+          {[
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "Framer Motion",
+            "Three.js",
+            "Supabase",
+          ].map((tech) => (
             <Badge
               key={tech}
               variant="secondary"
@@ -200,7 +203,6 @@ export function Footer() {
         </motion.div>
       </div>
 
-      {/* Decorative Elements */}
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-r from-primary/5 to-transparent rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-l from-primary/5 to-transparent rounded-full blur-2xl" />
     </footer>

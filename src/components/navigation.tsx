@@ -2,9 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 import { Menu, X, Github, Linkedin, Mail, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Profile } from "@/lib/supabase/types";
 
 const navigationItems = [
   { name: "Home", href: "#home" },
@@ -14,27 +20,45 @@ const navigationItems = [
   { name: "Contact", href: "#contact" },
 ];
 
-const socialLinks = [
-  { icon: Github, href: "https://github.com/SushantaBhowmick", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/sushanta-bhowmick", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:bhosushanta922@gmail.com", label: "Email" },
-];
-
-export function Navigation() {
+export function Navigation({ profile }: { profile: Profile }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isDark, setIsDark] = useState(false);
 
+  const socialLinks = [
+    {
+      icon: Github,
+      href: profile.github_url || "https://github.com/SushantaBhowmick",
+      label: "GitHub",
+    },
+    {
+      icon: Linkedin,
+      href:
+        profile.linkedin_url ||
+        "https://www.linkedin.com/in/sushanta-bhowmick",
+      label: "LinkedIn",
+    },
+    {
+      icon: Mail,
+      href: profile.email
+        ? `mailto:${profile.email}`
+        : "mailto:bhosushanta922@gmail.com",
+      label: "Email",
+    },
+  ];
+
   useEffect(() => {
-    toggleTheme();
+    document.documentElement.classList.add("dark");
+    setIsDark(true);
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
 
     const handleSectionChange = () => {
-      const sections = navigationItems.map(item => item.href.slice(1));
-      const currentSection = sections.find(section => {
+      const sections = navigationItems.map((item) => item.href.slice(1));
+      const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -42,7 +66,7 @@ export function Navigation() {
         }
         return false;
       });
-      
+
       if (currentSection) {
         setActiveSection(currentSection);
       }
@@ -50,7 +74,7 @@ export function Navigation() {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("scroll", handleSectionChange);
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("scroll", handleSectionChange);
@@ -82,21 +106,21 @@ export function Navigation() {
     >
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center space-x-2"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/60 rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">SB</span>
+              <span className="text-primary-foreground font-bold text-sm">
+                {(profile.display_name || "SB").slice(0, 2).toUpperCase()}
+              </span>
             </div>
             <span className="font-bold text-xl bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
-              Sushanta
+              {profile.display_name || "Sushanta"}
             </span>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <NavigationMenu>
               <NavigationMenuList className="flex space-x-6">
@@ -125,7 +149,6 @@ export function Navigation() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {/* Social Links */}
             <div className="flex items-center space-x-3">
               {socialLinks.map((link) => (
                 <Button
@@ -145,8 +168,7 @@ export function Navigation() {
                   </a>
                 </Button>
               ))}
-              
-              {/* Theme Toggle */}
+
               <Button
                 variant="ghost"
                 size="sm"
@@ -154,12 +176,15 @@ export function Navigation() {
                 onClick={toggleTheme}
                 aria-label="Toggle theme"
               >
-                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                {isDark ? (
+                  <Sun className="w-4 h-4" />
+                ) : (
+                  <Moon className="w-4 h-4" />
+                )}
               </Button>
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <div className="lg:hidden flex items-center space-x-2">
             <Button
               variant="ghost"
@@ -168,7 +193,11 @@ export function Navigation() {
               onClick={toggleTheme}
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {isDark ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
             </Button>
             <Button
               variant="ghost"
@@ -182,7 +211,6 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -212,8 +240,7 @@ export function Navigation() {
                     </button>
                   </motion.div>
                 ))}
-                
-                {/* Mobile Social Links */}
+
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
