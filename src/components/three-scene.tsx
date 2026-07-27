@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial } from '@react-three/drei';
-import { motion } from 'framer-motion';
-import { Mesh, Group } from 'three';
+import { useMemo, useRef, useState } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Sphere, MeshDistortMaterial } from "@react-three/drei";
+import { motion } from "framer-motion";
+import { Mesh, Group } from "three";
 
 function FloatingGeometry() {
   const meshRef = useRef<Mesh>(null);
@@ -43,27 +43,39 @@ function ParticleField() {
   const { viewport } = useThree();
   const particlesRef = useRef<Group>(null);
 
+  // Deterministic positions — Math.random() in render causes remount jitter
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 50 }, (_, i) => {
+        const seed = i * 1.618;
+        return {
+          key: i,
+          position: [
+            (Math.sin(seed) * 0.5) * viewport.width * 2,
+            (Math.cos(seed * 1.3) * 0.5) * viewport.height * 2,
+            Math.sin(seed * 0.7) * 5,
+          ] as [number, number, number],
+        };
+      }),
+    [viewport.width, viewport.height]
+  );
+
   useFrame((state) => {
     if (particlesRef.current) {
       particlesRef.current.rotation.y = state.clock.elapsedTime * 0.05;
     }
   });
 
-  const particles = Array.from({ length: 50 }, (_, i) => (
-    <mesh
-      key={i}
-      position={[
-        (Math.random() - 0.5) * viewport.width * 2,
-        (Math.random() - 0.5) * viewport.height * 2,
-        Math.random() * 10 - 5
-      ]}
-    >
-      <sphereGeometry args={[0.01, 8, 8]} />
-      <meshBasicMaterial color="#ffffff" opacity={0.6} transparent />
-    </mesh>
-  ));
-
-  return <group ref={particlesRef}>{particles}</group>;
+  return (
+    <group ref={particlesRef}>
+      {particles.map((p) => (
+        <mesh key={p.key} position={p.position}>
+          <sphereGeometry args={[0.01, 8, 8]} />
+          <meshBasicMaterial color="#ffffff" opacity={0.6} transparent />
+        </mesh>
+      ))}
+    </group>
+  );
 }
 
 export function ThreeScene() {
@@ -76,7 +88,7 @@ export function ThreeScene() {
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
         <spotLight position={[-10, -10, -10]} angle={0.3} intensity={1} />
-        
+
         <FloatingGeometry />
         <ParticleField />
       </Canvas>
@@ -84,13 +96,21 @@ export function ThreeScene() {
   );
 }
 
+/** Fixed orb layout — avoids SSR/client hydration mismatch from window/Math.random */
+const FLOATING_ORBS = [
+  { left: "12%", top: "18%", duration: 14, delay: 0 },
+  { left: "78%", top: "22%", duration: 18, delay: 0.4 },
+  { left: "24%", top: "68%", duration: 16, delay: 0.8 },
+  { left: "64%", top: "72%", duration: 20, delay: 0.2 },
+  { left: "48%", top: "12%", duration: 15, delay: 1.1 },
+  { left: "88%", top: "48%", duration: 17, delay: 0.6 },
+] as const;
+
 export function AnimatedBackground() {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
-      {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10" />
-      
-      {/* Animated Grid */}
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.3 }}
@@ -101,28 +121,24 @@ export function AnimatedBackground() {
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px',
-          backgroundPosition: '0 0, 0 0',
+          backgroundSize: "50px 50px",
+          backgroundPosition: "0 0, 0 0",
         }}
       />
 
-      {/* Floating Orbs */}
-      {typeof window !== 'undefined' && Array.from({ length: 6 }).map((_, i) => (
+      {FLOATING_ORBS.map((orb, i) => (
         <motion.div
           key={i}
-          className="absolute w-4 h-4 bg-primary/30 rounded-full blur-sm"
-          initial={{
-            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-          }}
+          className="absolute h-4 w-4 rounded-full bg-primary/30 blur-sm"
+          style={{ left: orb.left, top: orb.top }}
           animate={{
-            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+            x: [0, 40, -20, 0],
+            y: [0, -30, 20, 0],
           }}
           transition={{
-            duration: 10 + Math.random() * 10,
+            duration: orb.duration,
+            delay: orb.delay,
             repeat: Infinity,
-            repeatType: "reverse",
             ease: "linear",
           }}
         />

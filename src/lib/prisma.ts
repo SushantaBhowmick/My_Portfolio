@@ -4,6 +4,11 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
+/**
+ * Singleton Prisma client.
+ * With Supabase transaction pooler (pgbouncer), keep connection_limit low in DATABASE_URL
+ * (e.g. connection_limit=1) so HMR / parallel RSC queries do not exhaust the pool.
+ */
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
