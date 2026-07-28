@@ -192,7 +192,7 @@ export function ContactSection({ profile }: { profile: Profile }) {
                               <h4 className="font-semibold text-sm text-muted-foreground mb-1">
                                 {info.title}
                               </h4>
-                              <p className="font-medium text-foreground group-hover:text-primary transition-colors">
+                              <p className="font-medium text-foreground group-hover:text-primary transition-colors break-all">
                                 {info.value}
                               </p>
                               <p className="text-xs text-muted-foreground mt-1">
